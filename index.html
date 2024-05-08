@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu a fisarmonica</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: system-ui;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+    }
+
+    #menu {
+      background-color: #333;
+      width: 200px;
+      padding: 20px;
+    }
+
+    #menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #menu li {
+      margin-bottom: 10px;
+    }
+
+    #menu a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 10px;
+    }
+
+    #contenuto {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .contenuto-capitolo {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="menu">
+    <ul>
+      <li><a href="#capitolo1">Capitolo 1</a></li>
+      <li><a href="#capitolo2">Capitolo 2</a></li>
+      <li><a href="#capitolo3">Capitolo 3</a></li>
+      <li><a href="#capitolo4">Capitolo 4</a></li>
+      <li><a href="#capitolo5">Capitolo 5</a></li>
+      <li><a href="#capitolo6">Capitolo 6</a></li>
+      <li><a href="#capitolo7">Capitolo 7</a></li>
+      <li><a href="#capitolo8">Capitolo 8</a></li>
+    </ul>
+  </div>
+
+  <div id="contenuto">
+    <div id="capitolo1" class="contenuto-capitolo">
+      <h2>Capitolo 1</h2>
+      <p>Testo del capitolo 1...</p>
+    </div>
+
+    <div id="capitolo2" class="contenuto-capitolo">
+      <h2>Capitolo 2</h2>
+      <p>Testo del capitolo 2...</p>
+    </div>
+
+    <div id="capitolo3" class="contenuto-capitolo">
+      <h2>Capitolo 3</h2>
+      <p>Testo del capitolo 3...</p>
+    </div>
+
+    <div id="capitolo4" class="contenuto-capitolo">
+      <h2>Capitolo 4</h2>
+      <p>Testo del capitolo 4...</p>
+    </div>
+
+    <div id="capitolo5" class="contenuto-capitolo">
+      <h2>Capitolo 5</h2>
+      <p>Testo del capitolo 5...</p>
+    </div>
+
+    <div id="capitolo6" class="contenuto-capitolo">
+      <h2>Capitolo 6</h2>
+      <p>Testo del capitolo 6...</p>
+    </div>
+
+    <div id="capitolo7" class="contenuto-capitolo">
+      <h2>Capitolo 7</h2>
+      <p>Testo del capitolo 7...</p>
+    </div>
+
+    <div id="capitolo8" class="contenuto-capitolo">
+      <h2>Capitolo 8</h2>
+      <p>Testo del capitolo 8...</p>
+    </div>
+  </div>
+
+  <script>
+    const menuLinks = document.querySelectorAll('#menu a');
+    const contenutoCapitoli = document.querySelectorAll('.contenuto-capitolo');
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const targetId = event.target.getAttribute('href');
+        const contenutoCapitolo = document.querySelector(targetId);
+
+        contenutoCapitoli.forEach(capitolo => {
+          capitolo.style.display = 'none';
+        });
+
+        contenutoCapitolo.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
