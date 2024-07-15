@@ -1,123 +1,124 @@
-<html><head>
-  <title>Menu a fisarmonica</title>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: system-ui;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      height: 100vh;
-    }
-
-    #menu {
-      background-color: #333;
-      width: 300px;
-      padding: 20px;
-    }
-
-    #menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    #menu li {
-      margin-bottom: 10px;
-    }
-
-    #menu a {
-      text-decoration: none;
-      color: white;
-      display: block;
-      padding: 10px;
-    }
-
-    #contenuto {
-      flex: 1;
-      padding: 20px;
-    }
-
-    .contenuto-capitolo {
-      display: none;
-    }
-  </style>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            text-align: center;
+            background-color: #333; /* Grigio scuro */
+        }
+        .chatbot-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #0078d4;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .powered-by {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: #888;
+        }
+        .lovely-ai {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .question-mark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <div id="menu">
-    <ul>
-      <li><a href="#capitolo1">Capitolo 1 ☄️</a></li>
-      <li><a href="#capitolo2">Capitolo 2 💥</a></li>
-      <li><a href="#capitolo3">Capitolo 3 🗻</a></li>
-      <li><a href="#capitolo4">Capitolo 4 ✏️</a></li>
-      <li><a href="#capitolo5">Capitolo 5 🔥</a></li>
-      <li><a href="#capitolo6">Capitolo 6 🍎</a></li>
-      <li><a href="#capitolo7">Capitolo 7 🦁</a></li>
-      <li><a href="#capitolo8">Capitolo 8 🌠</a></li>
-    </ul>
-  </div>
-
-  <div id="contenuto">
-    <div id="capitolo1" class="contenuto-capitolo">
-      <h2>Capitolo 1</h2>
-      <p>In un remoto angolo dello spazio un pianeta, agli albori del suo esistere, fu vittima di un asteroide che lo colpì senza pietà; da tale collisione si generarono molti meteoriti: essi presero rotte differenti governate solo dalla legge di gravità. Su uno di questi si trovava un atomo di carbonio in compagnia di molti altri compagni, viaggiarono tra galassie e nebulose fino alla loro nuova casa. Questa era un pianeta principalmente blu, con qualche chiazza verde, l’asteroide schiantandosi uccise tutti i suoi abitanti più grossi: i dinosauri.</p>
+    <div class="chatbot-container">
+        <div class="lovely-ai">Lovely AI</div>
+        <input type="text" id="name1" placeholder="Nome del primo partner">
+        <input type="text" id="name2" placeholder="Nome del secondo partner">
+        <button onclick="generateRandomNumber()">Genera risultato</button>
+        <div id="result"></div>
+        <div class="powered-by">Powered by EchoAI</div>
+        <div class="question-mark" onclick="openPopup()">?</div>
     </div>
 
-    <div id="capitolo2" class="contenuto-capitolo">
-      <h2>Capitolo 2</h2>
-      <p>Quindi finalmente il carbonio raggiunse il nostro pianeta e qui coi suoi compagni formarono un deposito legandosi gli uni con gli altri. Si disposero ad una stessa distanza in gruppi di sei, si disposero poi in forma esagonale per difendersi dall’aggregazione di altri atomi; gli altri atomi di carbonio li imitarono formando una serie di esagoni bidimensionale che al piccolo atomo sembrava infinita. Così nacque un deposito di grafene che il tempo seppellì nel sottosuolo.</p>
+    <div class="popup" id="popup">
+        <div class="popup-close" onclick="closePopup()">X</div>
+        <p>Questa è un'AI sviluppata da Federico Gobbi, alla sua base si trova il motore EchoAI 16.0, alimentato da Google Gemini. Tutto questo è reso possibile dal software Open Source.</p>
     </div>
 
-    <div id="capitolo3" class="contenuto-capitolo">
-      <h2>Capitolo 3</h2>
-      <p>La tranquillità durò molte migliaia di anni, finché gli uomini non scoprirono il deposito: con i loro macchinari e con le loro braccia lo prelevarono e lo portarono nelle loro fabbriche. Il minerale fu ridotto a frammenti minuscoli che furono poi impastati in una sostanza appiccicosa dagli uomini chiamata argilla. Essi lavorarono il prodotto in piccole striscioline che, una volta cotte, furono infilate e ancorate bene in un bastoncino: così il nostro piccolo atomo divenne uno strumento per scrivere portando idee e parole sulla carta.</p>
-    </div>
+    <script>
+        function generateRandomNumber() {
+            const name1 = document.getElementById("name1").value.toLowerCase();
+            const name2 = document.getElementById("name2").value.toLowerCase();
+            let randomNumber = 0;
+            if (name1 === "fede" || name1 === "federico" || name1 === "gaia" ||
+                name2 === "fede" || name2 === "federico" || name2 === "gaia") {
+                randomNumber = 100;
+            } else {
+                randomNumber = Math.floor(Math.random() * 101); // Random number between 0 and 100
+            }
+            document.getElementById("result").textContent = `Il rapporto tra ${name1} e ${name2} è ${randomNumber}%`;
+        }
 
-    <div id="capitolo4" class="contenuto-capitolo">
-      <h2>Capitolo 4</h2>
-      <p>Un giorno durante un compito in classe la matita fu affilata per la prima volta e l’atomo fu impresso su una verifica; la matita continuò la sua funzione scrivendo esercizi, storie e poesie di ogni genere e sorta. La matita col tempo riportò molti segni dell’uso intenso che ne fu fatto: i segni che ne indicavano la ditta e la tipologia svanirono sotto l’azione di molti fattori e tra una temperata e l’altra andavano scomparendo anche i segni dei morsi.</p>
-    </div>
+        function openPopup() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
 
-    <div id="capitolo5" class="contenuto-capitolo">
-      <h2>Capitolo 5</h2>
-      <p>Ma il destino gli riservava un altro capitolo: gli archivi delle vecchie verifiche, ormai stracolmi, furono svuotati e queste ultime bruciate; tutte le speranza e i dolori raccolti in molti pezzi di carta vennero così distrutti senza pietà.il nostro atomo a causa di tale processo si legò a due atomi di ossigeno. Tale destino fu condiviso da molti suoi compagni che in una nube di fumo salirono al cielo trasportati dal vento in ogni dove.</p>
-    </div>
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+    </script>
+</body>
+</html>
 
-    <div id="capitolo6" class="contenuto-capitolo">
-      <h2>Capitolo 6</h2>
-      <p>Il vento lo portò fino a un albero che lo assorbì per svolgere la fotosintesi clorofilliana: sin dall’inizio il carbonio fu slegato dai suoi compagni di viaggio, i due atomi di ossigeno, e fu attaccato ad altri atomi di carbonio e alcuni nuovi per lui: il fosforo. In una sequenza turbinosa questo prodotto fu idrolizzato, condensato, idrolizzato fino a che si ritrovò insieme a sei atomi di carbonio, dodici di idrogeno e sei di ossigeno. questa molecola si chiama glucosio che la pianta impiegò per generare un frutto succoso che fu mangiato da un cervo.</p>
-    </div>
-
-    <div id="capitolo7" class="contenuto-capitolo">
-      <h2>Capitolo 7</h2>
-      <p>Il cervo stava ancora digerendo il pasto e tra poco il glucosio sarebbe entrato nel suo stomaco quando fu aggredito da un leone. Questi banchettò della preda appena fatta e utilizzò il glucosio per produrre energia e continuare a cacciare. Quando il leone morì i microorganismi lo decomposero e il carbonio fu liberato nuovamente continuando il suo corso.</p>
-    </div>
-
-    <div id="capitolo8" class="contenuto-capitolo">
-      <h2>Capitolo 8</h2>
-      <p>Così un piccolo atomo di carbonio, giunto con un asteroide, era stato protagonista di grandi cambiamenti su questo pianeta. Ha viaggiato attraverso lo spazio e il tempo e giunto qui ha preso questo ciclo da cui  tutti dipendiamo. E’ stato parte di tutto ciò che vive sulla terra nutrendolo, dandogli forza; forse questo è il bello di essere un atomo: contribuire all’esistenza di tutto fino all’ultima notte.</p>
-    </div>
-  </div>
-
-  <script>
-    const menuLinks = document.querySelectorAll('#menu a');
-    const contenutoCapitoli = document.querySelectorAll('.contenuto-capitolo');
-
-    menuLinks.forEach(link => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        const targetId = event.target.getAttribute('href');
-        const contenutoCapitolo = document.querySelector(targetId);
-
-        contenutoCapitoli.forEach(capitolo => {
-          capitolo.style.display = 'none';
-        });
-
-        contenutoCapitolo.style.display = 'block';
-      });
-    });
-  </script>
-
-</body></html>
